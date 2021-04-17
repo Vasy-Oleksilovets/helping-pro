@@ -1,0 +1,328 @@
+.form-alert {
+    font-size: 15px;
+}
+
+/* ---new styles--- */
+h1, h2, h3, h4, h5 {
+    color: #fff;
+}
+.form-asterisk {
+    color: #DF7B00;
+}
+
+.ccheck form input {
+    padding-left: unset;
+}
+
+.ccheck form.register-form {
+    padding-top: 20px;
+}
+
+.ccheck form.register-form .custom-select {
+    border: 0px;
+    border-radius: 0px;
+    padding: 14px 24px;
+    height: auto;
+}
+
+.register-form .form-section .field-box {
+    width: auto;
+    height: auto;
+    margin-top: unset;
+    margin-bottom: unset;
+    margin-right: unset;
+    border: 0px;
+}
+
+.compensation .form-section .field-box {
+    height: auto;
+}
+
+.field-title {
+    top: auto;
+    left: auto;
+    background: transparent;
+    border: 0px;
+    padding: 8px 0px;
+    font-weight: bold;
+    display: block;
+    color: #fff;
+}
+
+.form-field {
+    width: auto;
+    height: auto;
+    bottom: unset;
+    left: unset;
+}
+
+div[data-v] {
+    color: #fff;
+}
+
+.ccheck form input.form-field {
+    padding-left: 8px;
+}
+
+.ccheck form .categ-select-box1 li {
+    color: #000;
+    border: 2px solid #0B2241;
+}
+
+.ccheck form .form-section p, .ccheck form .form-section label, .char-sub-title {
+    color: #fff;
+}
+
+.form-section .row {
+    justify-content: space-between;
+}
+
+.row .col-lg-3 {
+    width: 30%;
+    max-width: 100%;
+    flex: 0 0 30%;
+    margin-bottom: 8px;
+}
+
+.form-section .row.step-section {
+    justify-content: flex-end;
+    padding: 20px 0px;    
+}
+
+button.step-btn {
+    margin: 12px 0px;
+}
+
+button.step-btn.inline {
+    margin-top: 38px;
+}
+
+.form-section .client-reg .row.steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #375173;
+    padding-bottom: 24px;
+    color: #fff;
+}
+
+.ccheck div.section-divide {
+    border-top: 2px solid #375173;
+}
+
+.steps .step {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    opacity: .6;
+    padding-right: 12px;
+    padding-bottom: 12px;
+}
+
+.steps .step.active {
+    opacity: 1;
+}
+
+.step .num {
+    border: 3px solid #DF7B00;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    margin-right: 20px;
+}
+
+.register-form .wrap::before {
+    background: #DF7B00;
+}
+
+.register-form input[type="checkbox"] {
+    padding: 0px;
+    width: 24px;
+    height: 24px;
+}
+
+.ccheck form .categ-select-box1 {
+    border: 0px;
+}
+
+.ccheck form .categ-select-box1 li.option-title {
+    background-color: #1D406A;
+    color: #fff;
+    padding: 20px;
+}
+
+.categ-select-box1 .option-list-item div:last-child{
+    color: #DF7B00;
+    font-weight: bold;
+    font-size: 24px !important;
+}
+
+.form-section ul.categ-selections {
+    border: 0px;
+}
+
+.ccheck form .categ-selections .categ-item {
+    background: transparent;
+    border-bottom: 0px;
+    border: 1px solid #1D406A;
+    padding: 8px;
+    margin-bottom: 8px;
+}
+
+.categ-selections .categ-item i {
+    color: #DF7B00;
+    font-size: 24px;
+}
+
+.categ-selections .categ-item .row {
+    align-items: center;
+}
+
+.compensation-row {
+    display: flex;
+    align-items: center;
+    margin-top: -12px;
+}
+
+.ccheck form .card {
+    background: transparent;
+}
+
+.cert-header .card-header {
+    border: 1px solid #375173;
+}
+
+.ccheck form .card .file-field-box {
+    height: auto;
+    border: 0px;
+    margin: 8px 0px;
+}
+
+.ccheck form button.get-started {
+    border-radius: 0px;
+    padding: 14px 24px;
+    height: auto;
+    width: 30%;
+}
+
+.ccheck form .file-upload, .ccheck form .file-upload:focus, .ccheck form .file-upload:active {
+    background: transparent;
+    border: 2px solid #DF7B00;
+    box-shadow: none;
+    transition: none;
+    border-radius: 0px;
+    height: auto;
+    width: 100%;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-right: 20px;
+    line-height: auto;
+
+}
+
+.ccheck form #upload-photo {
+    position: absolute;
+    left: 0px;
+    z-index: 99;
+    top: 0px;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+}
+
+.ccheck form .upload-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.ccheck form .upload-row .button-holder {
+    width: 50%;
+}
+
+.ccheck form .file-name-row {
+    width: 50%;
+    margin-left: 20px;
+    position: relative;
+}
+
+.ccheck form .upload-row input.file-name-txt {
+    height: auto;
+    width: 100% !important;
+    border-radius: 0px;
+    border: 1px solid #375173;
+    background:transparent;
+    
+}
+
+.select-another {
+    margin-bottom: 40px;
+}
+
+.acknowledge-box label {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.acknowledge-box input {
+    margin-right: 12px;
+}
+
+@media all and (max-width: 1000px) {
+    .bg .client-reg.container {
+        margin-top: 0px;
+    }
+}
+
+@media all and (max-width: 990px) {
+    .row .col-lg-3, .form-section.col-11 {
+        width: 100%;
+        flex: none;
+    }
+}
+
+@media all and (max-width: 740px) {
+    .form-section .row.steps {
+        justify-content: flex-start;
+    }
+
+    .register-form .form-section .field-box {
+        margin-bottom: 12px;
+    }
+
+    .ccheck form button.get-started {
+        width: 100%;
+    }
+
+    .ccheck form .upload-row {
+        flex-wrap: wrap;        
+    }
+    .ccheck form .upload-row .button-holder {
+        width: 100%;
+    }
+    
+    .ccheck form .file-name-row {
+        width: 100%;
+        margin-left: 0px;
+        margin-top: 20px;        
+    }
+}
+
+@media all and (max-width: 480px) {
+    .form-section .row.steps .step {
+        width: 50%;
+    }
+}
+
+@media all and (max-width: 360px) {
+    .form-section .row.steps .step {
+        width: 100%;
+    }
+}

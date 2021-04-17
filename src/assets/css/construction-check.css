@@ -1,0 +1,35 @@
+/* //////////// Files for the the page layout. I.e. headers & footers and etc... */
+
+@import "./layouts/footer.css";
+@import "./layouts/header.css";
+
+/* /////////// Files for all forms. */
+
+@import "./registration-forms/forms.css";
+
+/* Privacy Statement Acknowledgemnt at the bottom of each form */
+
+@import "./registration-forms/acknowledgment.css";
+
+/* Contractor Registration and all component scss */
+
+@import "./registration-forms/contractor/contractor-registration.css";
+@import "./registration-forms/contractor/categories.css";
+@import "./registration-forms/contractor/certifications.css";
+@import "./registration-forms/contractor/positions.css";
+
+/* Client Registration */
+
+@import "./registration-forms/client/client-registration.css";
+
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    overflow-x: hidden;
+}

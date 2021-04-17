@@ -1,0 +1,631 @@
+<template>
+    <b-container class="contractor-reg form-section">
+        <b-row class="no-gutters" justify="center">
+            <b-col class="client-title" cols="12">
+                <h3 class="text-center form-title">Certified Cost Professional Registration</h3>
+            </b-col>
+        </b-row>
+        <b-row class="no-gutters" cols="12">
+            <p><span class="form-asterisk">*</span><span class="char-general">field are required</span></p>
+        </b-row>
+        <form @submit="addCertifiedCostProffesional">
+            <b-container class="form-section">
+                <b-row class="no-gutters">
+                    <p class="char-sub-title">Your information</p>
+                </b-row>
+                <b-row class="no-gutters">
+                    <b-col cols="11" lg="3" class="form-section">
+                        <div class="field-box">
+                            <span class="field-title">First Name<span class="form-asterisk">*</span></span>
+                            <input class="form-field" v-model="certifiedProfessional.firstName" placeholder="">
+                        </div>
+                        <div v-if=" submitted && !certifiedProfessional.firstName" style="align-items: center"><img style="width: 15px; margin-bottom:1px;margin-right:4px;" alt="Vue logo" src="~@/assets/img/warning-icon.png"> <span style="color:red">Enter first name</span></div>
+                    </b-col>
+                    
+                    <b-col cols="11" lg="3" class="form-section">
+                        <div class="field-box">
+                            <span class="field-title">Last Name<span class="form-asterisk">*</span></span>
+                            <input class="form-field" v-model="certifiedProfessional.lastName" placeholder="">
+                        </div>
+                        <div v-if="submitted && !certifiedProfessional.lastName" style="align-items: center"><img style="width: 15px; margin-bottom:1px;margin-right:4px;" alt="Vue logo" src="~@/assets/img/warning-icon.png"> <span style="color:red">Enter last name</span></div>
+                    </b-col>
+                </b-row>
+                <b-row class="no-gutters">
+                    <b-col cols="11" lg="3" class="form-section">
+                        <div class="field-box">
+                            <span class="field-title">Email<span class="form-asterisk">*</span></span>
+                            <input class="form-field" type="text" v-model="certifiedProfessional.emailAddress" disabled>
+                            <!-- <input class="form-field" type="text" @change="validEmail()" v-model="certifiedProfessional.email" placeholder="Populated Email Read Only"> -->
+                        </div>
+                        <!--
+                        <div v-if=" submitted && !certifiedProfessional.email" style="align-items: center"><img style="width: 15px; margin-bottom:1px;margin-right:4px;" alt="Vue logo" src="~@/assets/img/warning-icon.png"> <span style="color:red">Enter email</span></div>
+                        <div v-if=" submitted && !isEmailValid" style="align-items: center"><img style="width: 15px; margin-bottom:1px;margin-right:4px;" alt="Vue logo" src="~@/assets/img/warning-icon.png"> <span style="color:red">Email is not valid</span></div> -->
+                    </b-col>
+                    <b-col cols="11" lg="3" class="form-section">
+                        <!--<div class="field-box">
+                            <span class="field-title">Confirm Email<span class="form-asterisk">*</span></span>
+                            <input class="form-field" placeholder="Populated Email Read Only" disabled>-->
+                            <!-- <input class="form-field" v-model="certifiedProfessional.confirmEmail" placeholder="Populated Email Read Only">  -->
+                        <!--</div>-->
+                    </b-col>
+                </b-row>
+                <b-row class="no-gutters">
+                    <b-col cols="11" lg="3" class="form-section">
+                        <div class="field-box">
+                            <span class="field-title">Phone Number<span class="form-asterisk">*</span></span>
+                            <input class="form-field" v-model="certifiedProfessional.phoneNumber" @input="acceptNumber()" placeholder="">
+                        </div>
+                        <div v-if=" submitted && !certifiedProfessional.phoneNumber" style="align-items: center"><img style="width: 15px; margin-bottom:1px;margin-right:4px;" alt="Vue logo" src="~@/assets/img/warning-icon.png"> <span style="color:red">Enter phone number</span></div> 
+                    </b-col>
+                </b-row>
+            </b-container>
+            <SectionDivide/>
+            <b-container class="form-section">
+                <b-row class="no-gutters">
+                    <p class="char-sub-title">Payment Address information</p>
+                </b-row>
+                <b-row class="no-gutters">
+                    <b-col cols="11" lg="3" class="form-section">
+                        <div class="field-box">
+                            <span class="field-title">Address Line One<span class="form-asterisk">*</span></span>
+                            <input class="form-field" v-model="certifiedProfessional.addressLine1" placeholder="">
+                        </div>
+                        <div v-if=" submitted && !certifiedProfessional.addressLine1" style="align-items: center"><img style="width: 15px; margin-bottom:1px;margin-right:4px;" alt="Vue logo" src="~@/assets/img/warning-icon.png"> <span style="color:red">Enter address line one</span></div>
+                       
+                    </b-col>
+                </b-row>
+                <b-row class="no-gutters">
+                    <b-col cols="11" lg="3" class="form-section">
+                        <div class="field-box">
+                            <span class="field-title">Address Line Two<span class="form-asterisk">*</span></span>
+                            <input class="form-field" v-model="certifiedProfessional.addressLine2" placeholder="">
+                        </div>
+                    </b-col>
+                </b-row>
+                <b-row class="no-gutters">
+                    <b-col cols="11" lg="3" class="form-section">
+                        <div class="field-box">
+                            <span class="field-title">City<span class="form-asterisk">*</span></span>
+                            <input class="form-field" v-model="certifiedProfessional.city" placeholder="">
+                        </div>
+                        <div v-if=" submitted && !certifiedProfessional.city" style="align-items: center"><img style="width: 15px; margin-bottom:1px;margin-right:4px;" alt="Vue logo" src="~@/assets/img/warning-icon.png"> <span style="color:red">Enter city</span></div>
+                       
+                    </b-col>
+                    <b-col cols="11" lg="3" class="form-section">
+                        <b-row class="no-gutters field-box-where d-flex justify-space-between" style="border: none !important">
+                            <b-form-select v-model="certifiedProfessional.state">
+                                <option value="" disabled selected hidden>State <span style="color: red">*</span></option>
+                                <option v-for="state in states" v-bind:key="state.name" v-bind:value="state.name">
+                                    {{ state.name }}
+                                </option>
+                            </b-form-select>
+                        </b-row>
+                        <div v-if=" submitted && !certifiedProfessional.state" style="align-items: center"><img style="width: 15px; margin-bottom:1px;margin-right:4px;" alt="Vue logo" src="~@/assets/img/warning-icon.png"> <span style="color:red">Enter state</span></div>
+                       
+                    </b-col>
+                    <b-col cols="11" lg="3" class="form-section">
+                        <div class="field-box-where">
+                            <span class="field-title">Zip Code<span class="form-asterisk">*</span></span>
+                            <input class="form-field" v-model="certifiedProfessional.zipCode" placeholder="">
+                        </div>
+                        <div v-if=" submitted && !certifiedProfessional.zipCode" style="align-items: center"><img style="width: 15px; margin-bottom:1px;margin-right:4px;" alt="Vue logo" src="~@/assets/img/warning-icon.png"> <span style="color:red">Enter zip code</span></div>
+                    </b-col>
+                </b-row>
+            </b-container>
+            <SectionDivide/>
+            <Positions :submitted = "submitted" @myPositions="positions" @position="receive_position" />
+            <br/>
+            <b-container class="form-section">
+                <b-row class="no-gutters">
+                    <b-col lg="4">
+                        <p class="char-sub-title">Compensation Per Hour <span class="form-asterisk">*</span></p>
+                    </b-col>
+                    <b-col lg="4">
+                        <p class="char-sub-title">Availability <span class="form-asterisk">*</span></p>
+                    </b-col>
+                </b-row>
+                <b-row class="no-gutters">
+                    <b-col class="form-section" cols="11" lg="4" style="display: flex; align-items: center">
+                        <span class="char-sub-title" style="margin-right:5px">from</span>
+                        <input style="width: 30%;padding-left:10px" :value="'$' + certifiedProfessional.compensationLow" class="reg-text-box" hide-details single-line type="text" @change="$set(compensationLow, $event)" v-on:keypress="isNumber(event)">
+                        <span class="char-sub-title" style="margin-right:10px">to</span>
+                        <input style="width: 30%;padding-left:10px" :value="'$' + certifiedProfessional.compensationHigh" class="reg-text-box" hide-details single-line type="text" @change="$set(compensationHigh, $event)" v-on:keypress="isNumber(event)">
+                    </b-col>
+                    <b-col class="form-section" lg="4" cols="11">
+                        <b-form-select style="height: 60%; margin-top:13px;" v-model="certifiedProfessional.availability">
+                            <option v-for="availability_opts in availability_opts" v-bind:key="availability_opts.value" v-bind:value="availability_opts.text" >
+                                    {{ availability_opts.text }}
+                            </option>    
+                        </b-form-select>
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col cols="11" lg="4" style="display: flex; align-items: center">
+                        <p class="text-bold" style="margin-top: 14px; margin-right: 10px">$0</p>
+                        <div class="wrap" role="group" aria-labelledby="multi-lbl" style="--a: 50; --b: 150; --min: 0; --max: 200">
+                            <label class="sr-only" for="a">Value A:</label>
+                            <input id="a" type="range" min="0" value="this.certifiedProfessional.compensationLow" max="200" v-model="certifiedProfessional.compensationLow" />
+                            <output for="a" style="--c: var(this.certifiedProfessional.compensationLow)"></output>
+                            <label class="sr-only" for="b">Value B:</label>
+                            <input id="b" type="range" min="0" value="this.certifiedProfessional.compensationHigh" max="200" v-model="certifiedProfessional.compensationHigh" />
+                            <output for="b" style="--c: var(this.certifiedProfessional.compensationHigh) "></output>
+                        </div>
+                        <p class="text-bold" style="margin-top: 14px; margin-left: 10px">$200</p>
+                    </b-col>
+                </b-row>
+            </b-container>
+            <SectionDivide/>
+            <b-container class="form-section">
+                <b-row class="no-gutters">
+                    <p class="char-sub-title">Education <span class="form-asterisk">*</span></p>
+                </b-row>
+                <b-row class="no-gutters">
+                    <p>A 4-year college or Quantity Surveying degree is an appropriate foundation for a Construction Check cost professional. The following degrees are preferred due to the analytical foundation that these individuals develop and need for performing.
+                        Preferred degrees for a Construction Check cost professional include:</p>
+                </b-row>
+                <b-row class="no-gutters">
+                    <b-col cols="11" lg="4" class="form-section">
+                        <b-row class="no-gutters field-box d-flex" style="border: none">
+                            <b-form-select v-model="certifiedProfessional.educationTypeId">
+                                <option v-for="edu_option in edu_options" v-bind:key="edu_option.ID" v-bind:value="edu_option.ID">
+                                    {{ edu_option.edu }}
+                                </option>    
+                            </b-form-select>
+                        </b-row>
+                        <div v-if="submitted && !certifiedProfessional.educationTypeId" style="align-items: center"><img style="width: 15px; margin-bottom:1px;margin-right:4px;" alt="Vue logo" src="~@/assets/img/warning-icon.png"> <span style="color:red">Select education</span></div>
+                    </b-col>
+                </b-row>
+            </b-container>
+            <SectionDivide/>
+            <b-container class="form-section">
+                <b-row class="no-gutters">
+                    <p class="char-sub-title">Industry Related Experience<span class="form-asterisk"> *</span></p>
+                </b-row>
+                <b-row class="no-gutters">
+                    <b-col cols="11" lg="4" class="form-section">
+                        <b-row class="no-gutters field-box d-flex" style="border: none">
+                            <b-form-select v-model="certifiedProfessional.experienceYearsId">
+                                <option v-for="indExp_option in indExp_options" v-bind:key="indExp_option.exp" v-bind:value="indExp_option.ID">
+                                    {{ indExp_option.exp }}
+                                </option>     
+                            </b-form-select>
+                        </b-row>
+                    </b-col>
+                </b-row>
+                <div v-if="submitted && !certifiedProfessional.experienceYearsId" style="align-items: center"><img style="width: 15px; margin-bottom:1px;margin-right:4px;" alt="Vue logo" src="~@/assets/img/warning-icon.png"> <span style="color:red">Select industry related experience</span></div>
+            </b-container>
+            <SectionDivide/>
+            <!-- <b-container class="form-section">
+                <b-row class="no-gutters">
+                    <p class="char-sub-title">Area of Expertise <span class="form-asterisk">*</span></p>
+                </b-row>
+                <b-row class="no-gutters">
+                    <b-col cols="11" lg="4" class="form-section">
+                        <b-row class="no-gutters field-box d-flex" style="border: none">
+                            <b-form-select v-model="certifiedProfessional.expertise">
+                                <option v-for="expertise in expertises" v-bind:key="expertise.field" v-bind:value="expertise.field">
+                                    {{ expertise.field }}
+                                </option>  
+                            </b-form-select>
+                        </b-row>
+                        <div v-if="submitted && !certifiedProfessional.expertise" style="align-items: center"><img style="width: 15px; margin-bottom:1px;margin-right:4px;" alt="Vue logo" src="~@/assets/img/warning-icon.png"> <span style="color:red">Select area of expertise</span></div>
+                    </b-col>
+                </b-row>
+            </b-container>
+            <SectionDivide/> -->
+            <Certifications :submitted = "submitted" @certs="setCerts" />
+            <SectionDivide/>
+            <Categories :submitted = "submitted" @exp="projExp" @otherExperience="otherExperiences"/>
+            <SectionDivide/>
+            <AcknowledgementStatement v-bind:is-checked="statementAcknowledged" @acknowledged="acknowledged" />
+            <input type="submit" value="Get Started" class="ack-submit" />
+        </form>
+    </b-container>
+</template>
+
+<script>
+import AcknowledgementStatement from '../AcknowledgementStatement'
+import SectionDivide from '../SectionDivide'
+import Positions from "./Positions"
+import Certifications from "./Certifications"
+import Categories from "./Categories"
+import axios from 'axios';
+import EstimatorProxy from '@/proxies/EstimatorProxy.js';
+
+export default {
+    name: 'ContractorRegistrationPage',
+    components: {
+        AcknowledgementStatement,
+        SectionDivide,
+        Positions,
+        Certifications,
+        Categories
+    },
+
+    props: {
+        isChecked: Boolean,
+    },
+    data() {
+        return {
+            hasError: false,
+            // All Form Fields
+            certifiedProfessional: {
+                firstName: '',
+                lastName: '',
+                emailAddress: '',
+                confirmEmail: '',
+                phoneNumber: '',
+                addressLine1: '',
+                addressLine2: '',
+                city: '',
+                state: '',
+                jobTitle: '',
+                zipCode: '',
+                myPositions: [],
+                compensationHigh: 150,
+                compensationLow: 50,
+                educationTypeId: '',
+                experienceYearsId: '',
+                expertiseCategoryId: 0,
+                expertiseSubCategoryId: [],
+                buildingTypeId: [],
+                allCerts: [],
+                checked: '',
+                positionAppliedForId: 0,
+                country: "USA",
+                certificationId: [],
+                otherProjectExperience: [],
+                inviteCode: '',
+                 availability: '',
+            },
+
+            // Values for the slider selection
+            min: 0,
+            max: 200,
+            slider: 40,
+            // Initial values for the slider thumbs
+            min_thumb: 50,
+            max_thumb: 150,
+
+            // Values for the 'Positions' selection
+            position_options: [
+                { position: "Certified Cost Engineer" },
+                { position: "Certified Cost Estimator" },
+                { position: "Certified Cost Surveyor" },
+            ],
+
+            // Values for the 'Education' selection
+            edu_options: [
+                {ID:1, edu: "engineering or science based" },
+                {ID:2, edu: "business administration, accounting, or management" },
+                {ID:3, edu: "building/construction management or architecture" },
+                {ID:4, edu: "information technolody / services" },
+                {ID:5, edu: "BSc (Hons) Quanitity Surveying" },
+                {ID:6, edu: "MSc Quanitity Surveying — Mechanical & Electrical" },
+                {ID:7, edu: "MSc Project Management in Construction" },
+                {ID:8, edu: "MSc Construction Management" },
+            ],
+            // Values for the 'Industry Postions' selection
+            indExp_options: [
+                {ID:1, exp: "5 -10 years" },
+                {ID:2, exp: "10 - 15 years" },
+                {ID:3, exp: "15 - 20 years" },
+                {ID:4, exp: "20+ years" },
+            ],
+            // Values for the 'Expertise' selection
+            expertises: [
+                {ID:1, field: "General/Architectural" },
+                {ID:2, field: "Structural" },
+                {ID:3, field: "Mechanical" },
+                {ID:4, field: "Electrical" },
+                {ID:5, field: "State/Civil" },
+            ],
+            
+            availability_opts : [
+                {ID:1, text: 'Full time'},
+                {ID:2, text: 'Part time'},
+                {ID:3, text: 'Contractor'}
+            ],
+            // Values for availability
+
+            states: [
+                { name: "Alabama", value: "AL" },
+                { name: "Alaska", value: "AK" },
+                { name: "Arkansas", value: "AR" },
+                { name: "California", value: "CA" },
+                { name: "Colorado", value: "CO" },
+                { name: "Connecticut", value: "CT" },
+                { name: "Delaware", value: "DE" },
+                { name: "Florida", value: "FL" },
+                { name: "Georgia", value: "GA" },
+                { name: "Hawaii", value: "HI" },
+                { name: "Idaho", value: "ID" },
+                { name: "Illinois", value: "IL" },
+                { name: "Indiana", value: "IN" },
+                { name: "Iowa", value: "IA" },
+                { name: "Kansas", value: "KS" },
+                { name: "Kentucky", value: "KY" },
+                { name: "Louisiana", value: "LA" },
+                { name: "Maine", value: "ME" },
+                { name: "Maryland", value: "MD" },
+                { name: "Massachusetts", value: "MA" },
+                { name: "Michigan", value: "MI" },
+                { name: "Minnesota", value: "MO" },
+                { name: "Mississippi", value: "MS" },
+                { name: "Missouri", value: "MO" },
+                { name: "Montana", value: "MT" },
+                { name: "Nebraska", value: "NE" },
+                { name: "Nevada", value: "NV" },
+                { name: "New Hampshire", value: "NH" },
+                { name: "New Jersey", value: "NJ" },
+                { name: "New Mexico", value: "NM" },
+                { name: "New York", value: "NY" },
+                { name: "North Carolina", value: "NC" },
+                { name: "North Dakota", value: "ND" },
+                { name: "Ohio", value: "OH" },
+                { name: "Oklahoma", value: "OK" },
+                { name: "Oregon", value: "OR" },
+                { name: "Pennsylvania", value: "PA" },
+                { name: "Rhode Island", value: "RI" },
+                { name: "South Carolina", value: "SC" },
+                { name: "South Dakota", value: "SD" },
+                { name: "Tennessee", value: "TN" },
+                { name: "Texas", value: "TX" },
+                { name: "Utah", value: "UT" },
+                { name: "Vermont", value: "VI" },
+                { name: "Virginia", value: "VA" },
+                { name: "Washington", value: "WA" },
+                { name: "West Virginia", value: "WV" },
+                { name: "Wisconsin", value: "WI" },
+                { name: "Wyoming", value: "WY" }
+            ],
+
+            // Booleans values for the acknowledgement section
+            statementAcknowledged: this.isChecked,
+            statementVerified: false,
+            submitted: false,
+            isEmailValid: false,
+            //Values for the Position -> Receive Data from Position Component
+            send_position: {}
+        }
+    },
+    methods: {
+        //Method to receive the position from the Position Component
+        receive_position(send_position){
+            this.send_position = send_position;
+            this.certifiedProfessional.expertiseCategoryId = send_position.area_expertise;
+            this.certifiedProfessional.expertiseSubCategoryId = send_position.skills;
+            this.certifiedProfessional.positionAppliedForId = send_position.position_applying_for;
+
+        },
+        acceptNumber() {
+            //alert('hi');
+            var x = this.certifiedProfessional.phoneNumber.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+            this.certifiedProfessional.phoneNumber = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        },
+        validEmail(){
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if(re.test(this.certifiedProfessional.emailAddress)) this.isEmailValid = true;
+            else this.isEmailValid = false;
+        },
+        isNumber: function(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if ((charCode > 31 && (charCode < 48 || charCode > 57)) || charCode === 46) {
+                evt.preventDefault();
+            } else {
+                return true;
+            }
+        },
+
+        acknowledged(checked) {
+            this.certifiedProfessional.checked = checked;
+            this.statementVerified = checked;
+            this.statementAcknowledged = checked;
+        },
+
+        setCerts(allCerts) {
+            this.certifiedProfessional.allCerts = allCerts;
+            let result = [];
+            for(let cert of allCerts){
+                result.push(cert.ID);
+            }
+            this.certifiedProfessional.certificationId = result;
+        },
+
+        positions(allPositions) {
+            this.certifiedProfessional.myPositions = allPositions;
+            // is data being pushed?
+        },
+
+        projExp(exp) {
+            this.certifiedProfessional.buildingTypeId = exp;
+        },
+        validationCheck(){
+            const { addressLine1, firstName, lastName, allCerts, checked, city, educationTypeId, emailAddress, 
+                expertiseSubCategoryId, experienceYearsId, myPositions, phoneNumber, state, zipCode } = this.certifiedProfessional;
+            if(addressLine1 && lastName && firstName && allCerts.length && 
+            checked && city && educationTypeId && expertiseSubCategoryId.length && experienceYearsId && 
+            positionAppliedForId && phoneNumber && state && zipCode){
+                 return true;
+            }
+            else{
+                return false;
+            }
+        },
+        addCertifiedCostProffesional(e) {
+            this.submitted = true;
+            e.preventDefault();
+            if (this.statementAcknowledged == false || this.statementVerified == false) {
+                this.statementAcknowledged = true;
+            }
+            
+            if(this.validationCheck()){
+                const {
+                    firstName,
+                    lastName,
+                    emailAddress,
+                    confirmEmail,
+                    phoneNumber,
+                    addressLine1,
+                    addressLine2,
+                    city,
+                    jobTitle,
+                    zipCode,
+                    myPositions,
+                    compensationHigh,
+                    compensationLow,
+                    educationTypeId,
+                    experienceYearsId,
+                    expertiseSubCategoryId,
+                    buildingTypeId, //Experiences ID
+                    allCerts,
+                    checked
+                } = this.certifiedProfessional;
+
+            var params = this.certifiedProfessionall;
+            new EstimatorProxy().createEstimatorProfile(params).then((response) => {
+            if (response.data == "ERROR") {
+                this.showResponse = true;
+                this.responseMessage = "There was an error creating your account. Please try again."
+            }else if(response.data == "DUPLICATE"){
+                this.showRegistrationSection = false;
+                this.showResponse = true;s
+                this.responseMessage = "There is already an Estimator profile using this email address. Please login from the home page."
+            }else if(response.data == "DUPEUSER"){
+                this.showRegistrationSection = false;
+                this.showResponse = true;
+                this.responseMessage = "There is already a registered user using this email address. Please apply with a different email address."
+            }else if(response.data == "PENDING"){
+                this.showResponse = true;
+                this.showRegistrationSection = false;
+                this.responseMessage = "There is already an Estimator profile using this email address. Please contact Construction Check if you did not receive the acknowledement email."
+            }else{
+                // account created, show message about email
+                this.showRegistrationSection = false;
+                this.showResponse = true;
+                this.responseMessage = "The link sent to your email will expire in 48 hours. Please follow the instructions in the email in order to log in to your account."
+            }
+            })
+            .catch(e => {
+                    this.errors.push("There was an error creating your account. Please try again.");
+            });                  
+/*
+                axios.post(  {
+                        firstName,
+                        lastName,
+                        emailAddress,
+                        confirmEmail,
+                        phoneNumber,
+                        addressLine1,
+                        addressLine2,
+                        city,
+                        jobTitle,
+                        zipCode,
+                        myPositions,
+                        compensationHigh,
+                        compensationLow,
+                        educationTypeId,
+                        experienceYearsId,
+                        expertise,
+                        buildingTypeId,
+                        allCerts,
+                        checked
+                    })
+                    .then(res => res.data(res))
+                    .catch(err => console.log(err));
+*/                    
+            }
+        },
+        //Method that receive the data from Categories component
+        otherExperiences (experiences) {
+            this.certifiedProfessional.otherProjectExperience = experiences;
+        },
+        /*
+        registerUser(e){
+            var params = new URLSearchParams();
+            params.append('password', this.pass1);
+            params.append('inviteCode', this.inviteCode);
+            new EstimatorProxy().createEstimatorUser(params).then((response) => {
+                if(response.status == '200'){
+                    // verified
+                    if(response.data.token != null){
+                            this.token = response.data.token;
+                            this.hasError = false;
+                            this.$router.push('/login');
+                    }else{
+                        this.hasError = true;
+                        if(response.data.error != null){
+                            this.errors.push(response.data.error);
+                        }else{
+                            this.errors.push("An unknown error has occurred, please contact Construction Check to determine the cause.")
+                        }
+                    }
+                }
+            })
+            .catch(e => {
+                    this.errors.push("There was an error creating your user account. Please try again.");
+            }) 
+
+        },       */ 
+        getEstimatorInviteEmail(){
+            var params = new URLSearchParams();
+            params.append('inviteCode', this.certifiedProfessional.inviteCode);
+            new EstimatorProxy().getEstimatorInviteEmail(params).then((response) => {
+                if(response.status == '200'){
+                    // verified
+                    if(response.data.emailAddress != null){
+                            this.certifiedProfessional.emailAddress = response.data.emailAddress;
+                            this.hasError = false;
+                    }else{
+                        this.hasError = true;
+                        if(response.data.error != null){
+                            //this.errors.push(response.data.error);
+                        }else{
+                            //this.errors.push("An unknown error has occurred, please contact Construction Check to determine the cause.")
+                        }
+                    }
+                }
+            })
+            .catch(e => {
+                    this.hasError = true;
+                    this.errors.push("Invalid email address verification code.")
+            }) 
+        },         
+    },
+    created() {
+        this.certifiedProfessional.inviteCode = this.$route.params.verifyCode;
+        this.getEstimatorInviteEmail();
+    }    
+}
+
+addEventListener('input', e => {
+    let _t = e.target;
+    _t.parentNode.style.setProperty(`--${_t.id}`, +_t.value)
+}, false);
+
+// let min = 0, max = 200;
+// let a = 50, b = 150;
+</script>
+
+<style lang="css" scoped>
+    .custom-select {
+        height: 100%;
+        width: 100%;
+        border: 1.5px solid #c9c9c9;
+        background: #fff url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5'%3E%3Cpath fill='%23343a40' d='M2  -1h4zm0 5L0 1h4z'/%3E%3C/svg%3E") no-repeat right 0.75rem center/8px 10px;
+    }
+    .text-bold {
+        font-weight: 600;
+    }
+    @media only screen and (max-width: 600px) {
+        .char-general {
+            font-size: 14px;
+        }
+        .form-section {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+    }
+</style>

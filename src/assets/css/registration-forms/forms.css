@@ -1,0 +1,163 @@
+.ack-submit {
+    width: 137px;
+    height: 40px;
+    margin-bottom: 45px;
+    background: #0C2340;
+    border-radius: 8px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+}
+
+.client-title {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-justify: center;
+    text-align: center;
+    width: 100%;
+}
+
+.field-box {
+    border: 1.5px solid #C9C9C9;
+    border-radius: 3px;
+    padding: 0px;
+    width: 90%;
+    height: 40px;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    margin-right: 21px;
+}
+
+.field-box:hover .select-arrow {
+    transform: rotate(180deg);
+    transition-duration: 0.5s;
+}
+
+.field-box-where {
+    border: 1.5px solid #C9C9C9;
+    box-sizing: border-box;
+    border-radius: 3px;
+    width: 80%;
+    height: 40px;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    margin-right: 21px;
+}
+
+.field-box-where:hover .select-arrow {
+    transform: rotate(180deg);
+    transition-duration: 0.5s;
+}
+
+.field-title {
+    position: relative;
+    top: -10px;
+    left: 5px;
+    background: #FFFFFF;
+    border: 3px solid #FFFFFF;
+}
+
+.form-alert {
+    color: #FF0000;
+}
+
+.form-asterisk {
+    color: red;
+    margin-right: 2px;
+}
+
+.form-field {
+    position: relative;
+    background: #FFFFFF;
+    border: none;
+    width: 95%;
+    height: 25px;
+    bottom: 12px;
+    left: 5px;
+}
+
+.char-sub-title {
+    font-weight: 800;
+}
+
+.form-field:focus {
+    outline: none;
+}
+
+.char-general {
+    font-weight: 400;
+}
+
+.form-field-state {
+    position: relative;
+    background: #FFFFFF;
+    border: none;
+    width: 120%;
+    height: 100%;
+    padding-left: 5px;
+    bottom: 3px;
+    margin: 0;
+}
+
+.form-section {
+    padding: 0px !important;
+}
+
+.form-title {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 29px;
+    /* identical to box height */
+    color: #000000;
+}
+
+
+/* Regular Select Box */
+
+.reg-select-box {
+    border-radius: 3px;
+    width: 110% !important;
+    height: 40px !important;
+    padding-left: 5px;
+    background: none !important;
+    border: none !important;
+}
+
+.reg-select-box:focus {
+    outline: none;
+}
+
+.reg-select-box-where {
+    border-radius: 3px;
+    width: 120% !important;
+    height: 40px !important;
+    padding-left: 5px;
+    background: none !important;
+    border: none !important;
+}
+
+.reg-select-box-where:focus {
+    outline: none;
+}
+
+
+
+
+.select-arrow {
+    position: relative;
+    margin-top: 60%;
+    width: 0;
+    height: 0 !important;
+    border-style: solid;
+    border-width: 8px 8px 0 8px;
+    border-color: #000000 transparent transparent transparent;
+}
+
+.select-arrow:hover {
+    transform: rotate(180deg);
+    transition-duration: 0.5s;
+}
